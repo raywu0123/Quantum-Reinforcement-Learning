@@ -1,5 +1,3 @@
-from qiskit import QuantumProgram
-
 #################### Grover Iteration for 1 qubit
 
 #Is it possible?
