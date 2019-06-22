@@ -9,6 +9,7 @@ matplotlib = "*"
 pandas = "*"
 tqdm = "*"
 qiskit = "*"
+"flake8" = "*"
 
 [dev-packages]
 
