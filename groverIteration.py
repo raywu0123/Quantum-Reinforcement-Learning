@@ -1,196 +1,199 @@
-from qiskit import QuantumProgram
-
 #################### Grover Iteration for 1 qubit
 
-#Is it possible?
+# Is it possible?
 
 
 #################### Grover Iteration for 2 qubits
 
 def gIteration00(qc, qr):
-  # apply the s gate to both qubits
-  qc.s(qr)
+    # apply the s gate to both qubits
+    qc.s(qr)
 
-  # apply h gate to the 2nd qubit
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply the s gate to both qubits
-  qc.s(qr)
+    # apply the s gate to both qubits
+    qc.s(qr)
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  return qc, qr
+    return qc, qr
+
+
 #########################################################
 
 def gIteration01(qc, qr):
-  # apply the s gate to 1st qubit
-  qc.s(qr[0])
+    # apply the s gate to 1st qubit
+    qc.s(qr[0])
 
-  # apply h gate to the 2nd qubit
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply the s gate to 1st qubit
-  qc.s(qr[0])
+    # apply the s gate to 1st qubit
+    qc.s(qr[0])
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  return qc, qr
+    return qc, qr
+
 
 def gIteration10(qc, qr):
-  # apply the s gate to both qubits
-  qc.s(qr[1])
+    # apply the s gate to both qubits
+    qc.s(qr[1])
 
-  # apply h gate to the 2nd qubit
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply the s gate to both qubits
-  qc.s(qr[1])
+    # apply the s gate to both qubits
+    qc.s(qr[1])
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  return qc, qr
+    return qc, qr
+
 
 def gIteration11(qc, qr):
-  # apply h gate to the 2nd qubit
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # apply CNOT with control as 2nd qubit to target as 1st qubit
-  qc.cx(qr[0], qr[1])
+    # apply CNOT with control as 2nd qubit to target as 1st qubit
+    qc.cx(qr[0], qr[1])
 
-  # apply h gate to the 2nd qubit again
-  qc.h(qr[1])
+    # apply h gate to the 2nd qubit again
+    qc.h(qr[1])
 
-  # now use the X gate
-  qc.x(qr)
+    # now use the X gate
+    qc.x(qr)
 
-  # add the H gate in the Qubit 0 and 1
-  qc.h(qr)
+    # add the H gate in the Qubit 0 and 1
+    qc.h(qr)
 
-  return qc, qr
+    return qc, qr
+
 
 #################### Grover Iteration for 3 qubits
 
 def gIteration000(qc, qr):
+    return qc, qr
 
-  return qc, qr
 
 def gIteration001(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration010(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration011(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration100(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration101(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration110(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 def gIteration111(qc, qr):
-  
-  return qc, qr
+    return qc, qr
+
 
 ###########################################################
 """

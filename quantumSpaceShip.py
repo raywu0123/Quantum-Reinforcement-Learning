@@ -10,7 +10,9 @@ import warnings
 
 import groverIteration as GI
 
+
 class QuantumSpaceShipSolver():
+
     def __init__(self, n_episodes=1000, n_win_ticks=195, max_env_steps=None, quiet=False, alpha=0.4, alpha_decay=0.0, discount_factor = 0.5):
         #self.memory = deque(maxlen=100000)
         self.memory = defaultdict(list)
