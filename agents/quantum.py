@@ -12,12 +12,12 @@ from .base import BaseAgent
 
 class QuantumAgent(BaseAgent):
 
-    def __init__(self, action_space, discount_factor=0.9, alpha=0.8):
+    def __init__(self, action_space, discount_factor=0.9, alpha=0.8, **kwargs):
         self.memory = defaultdict(tuple)
-        self.discount_factor = 0.9
-        self.alpha = 0.8
+        self.discount_factor = discount_factor
+        self.alpha = alpha
 
-    def get_action(self, state):
+    def get_action(self, state, env):
         circuit = QuantumCircuit(2, 2)
         circuit.h(0)
         circuit.h(1)

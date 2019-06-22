@@ -33,7 +33,8 @@ if __name__ == '__main__':
             if args.random:
                 action = env.sample_random_action()
             else:
-                action = agent.get_action(state)
+                action = agent.get_action(state, env)
+
             next_state, reward, done = env.step(action)
             agent.learn(state, action, next_state, reward)
             state = next_state
