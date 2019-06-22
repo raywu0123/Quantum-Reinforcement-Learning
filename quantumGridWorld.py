@@ -1,7 +1,7 @@
 import itertools
-import matplotlib
+from matplotlib import pyplot as plt
 
-matplotlib.style.use('ggplot')
+plt.style.use('ggplot')
 import numpy as np
 import sys
 
