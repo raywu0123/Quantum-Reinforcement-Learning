@@ -47,7 +47,10 @@ class QuantumAgent(BaseAgent):
             next_state_value = 0.0
 
         # Update state value
-        state_value = state_value + self.alpha * (reward + (self.discount_factor * next_state_value) - state_value)
+        state_value = state_value + \
+            self.alpha * (
+                reward + (self.discount_factor * next_state_value) - state_value
+            )
         self.memory[state] = (action, state_value, next_state, reward)
 
 
@@ -64,8 +67,8 @@ def collapse_action_select_method(circuit):
 
 
 def groverIteration(eigen_action, action, reward, next_state_value):
-    # if L < 2:
-    L = int(0.2 * (reward + next_state_value))  # reward + value of the next_state, k is .3 which is arbitrary
+    # reward + value of the next_state, k is .3 which is arbitrary
+    L = int(0.2 * (reward + next_state_value))
     if L > 1:
         L = 1
 
