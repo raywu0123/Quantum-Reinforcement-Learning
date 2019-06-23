@@ -47,4 +47,4 @@ class TraditionalQLearningAgent(BaseAgent):
         return max(action_reward_map.items(), key=operator.itemgetter(1))[idx]
 
     def update_explore_rate(self):
-        self.explore_rate = self.explore_rate * 0.99999
+        self.explore_rate = max(self.explore_rate * 0.999, 1e-2)

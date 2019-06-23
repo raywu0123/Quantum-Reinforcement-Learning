@@ -11,10 +11,9 @@ if __name__ == '__main__':
     parser = get_parser()
     args = parser.parse_args()
 
-    get_env = EnvHub[args.env_id]
+    env = EnvHub.get_env(env_id=args.env_id, save=args.save)
     get_agent = AgentHub[args.agent_id]
 
-    env = get_env(save=args.save)
     agent = get_agent(
         action_space=env.action_space,
         discount_factor=args.discount_factor,

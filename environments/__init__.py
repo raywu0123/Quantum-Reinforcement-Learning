@@ -1,20 +1,19 @@
 from .gridworld import GridWorldEnv
 from .mygym import GymEnv
 
-class Hub:
-    def __init__(self, hub):
-        self.hub = hub
 
-    def __getitem__(self, env_id):
-        if env_id in self.hub:
-            return hub[env_id]
+class EnvHub:
+
+    custom_env_hub = {
+        'gridworld': GridWorldEnv,
+    }
+
+    @classmethod
+    def get_env(cls, env_id, **kwargs):
+        if env_id in cls.custom_env_hub:
+            return cls.custom_env_hub[env_id](**kwargs)
         else:
-            return lambda save: GymEnv(env_id, save)
+            return GymEnv(env_id, **kwargs)
 
-# EnvHub = {
-#     'gridworld': GridWorldEnv,
-# }
 
-EnvHub = Hub({
-    'gridworld': GridWorldEnv,
-})
+
