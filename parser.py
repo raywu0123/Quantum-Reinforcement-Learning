@@ -3,13 +3,18 @@ from argparse import ArgumentParser
 
 def get_parser():
     parser = ArgumentParser()
-    # TODO
     parser.add_argument(
         '-e',
         '--env_id',
         type=str,
         default='gridworld',
-        help='name of the environment [gridworld]'
+        help='name of the environment '
+             '['
+             'gridworld / '
+             'FrozenLake-notslip / FrozenLake-slip / '
+             'FrozenLake8x8-notslip / FrozenLake8x8-slip / '
+             'Taxi-v2'
+             ']'
     )
     parser.add_argument(
         '-a',
@@ -34,19 +39,19 @@ def get_parser():
     parser.add_argument(
         '-r',
         '--render',
-        type=bool,
-        default=False,
+        dest='render',
+        action='store_true'
     )
     parser.add_argument(
         '-s',
         '--save',
-        type=bool,
-        default=False,
+        dest='save',
+        action='store_true'
     )
     parser.add_argument(
         '--random',
         dest='random',
         action='store_true'
     )
-    parser.set_defaults(random=False)
+    parser.set_defaults(render=False, save=False, random=False)
     return parser
