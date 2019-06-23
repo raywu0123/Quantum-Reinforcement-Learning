@@ -6,9 +6,9 @@ from .base import BaseEnvironment
 
 class GymEnv(BaseEnvironment):
 
-    def __init__(self, env_id, save):
+    def __init__(self, env_id, save, **kwargs):
         print(env_id)
-        self.env = gym.make(env_id)
+        self.env = gym.make(env_id, **kwargs)
         if save:
             self.env = gym.wrappers.Monitor(
                 self.env,
@@ -75,10 +75,10 @@ class GymEnv(BaseEnvironment):
 
     @staticmethod
     def serialize_state(state):
-        if isinstance(state, np.ndarray) or isinstance(state, np.int64):
+        if isinstance(state, np.ndarray):
             return state.tostring()
-        elif isinstance(state, int):
-            return state
+        elif isinstance(state, int) or isinstance(state, np.int64):
+            return int(state)
         else:
             raise ValueError(f'unexpected state: {state}, type: {type(state)}')
 
