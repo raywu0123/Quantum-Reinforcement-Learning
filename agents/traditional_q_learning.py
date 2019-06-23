@@ -6,7 +6,7 @@ from .base import BaseAgent
 
 class TraditionalQLearningAgent(BaseAgent):
 
-    def __init__(self, action_space, discount_factor=0.9, alpha=0.8, epsilon=0.1, **kwargs):
+    def __init__(self, action_space, discount_factor=0.99, alpha=0.05, epsilon=0.5, **kwargs):
         self.action_space = action_space
         self.discount_factor = discount_factor
         self.alpha = alpha
@@ -47,4 +47,4 @@ class TraditionalQLearningAgent(BaseAgent):
         return max(action_reward_map.items(), key=operator.itemgetter(1))[idx]
 
     def update_explore_rate(self):
-        self.explore_rate = max(self.explore_rate * 0.999, 1e-2)
+        self.explore_rate = max(self.explore_rate - self.epsilon / 1e5, 0)

@@ -13,9 +13,10 @@ from .base import BaseAgent
 class QuantumAgent(BaseAgent):
 
     def __init__(self, action_space, discount_factor=0.9, alpha=0.8, **kwargs):
-        self.memory = defaultdict(tuple)
         self.discount_factor = discount_factor
         self.alpha = alpha
+        self.action_space = action_space
+        self.memory = defaultdict(tuple)
 
     def get_action(self, state, env):
         circuit = QuantumCircuit(2, 2)
@@ -33,6 +34,8 @@ class QuantumAgent(BaseAgent):
             circuit = groverIteration(circuit, action, reward, next_state_value)
 
         action = collapse_action_select_method(circuit)
+        if action not in self.action_space:
+            action = self.get_action(state, env)
         return action
 
     def learn(self, state, action, next_state, reward):

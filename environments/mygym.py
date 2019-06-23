@@ -1,6 +1,5 @@
 import random
 import gym
-import pickle
 import numpy as np
 from .base import BaseEnvironment
 
@@ -76,7 +75,12 @@ class GymEnv(BaseEnvironment):
 
     @staticmethod
     def serialize_state(state):
-        return pickle.dumps(state)
+        if isinstance(state, np.ndarray) or isinstance(state, np.int64):
+            return state.tostring()
+        elif isinstance(state, int):
+            return state
+        else:
+            raise ValueError(f'unexpected state: {state}, type: {type(state)}')
 
     @staticmethod
     def quantize_state(state, unit):
