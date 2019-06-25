@@ -2,9 +2,12 @@ from collections import defaultdict
 
 from qiskit import (
     QuantumCircuit,
+    QuantumRegister,
+    ClassicalRegister,
     execute,
     Aer,
 )
+from bistiming import SimpleTimer
 
 import groverIteration as GI
 from .base import BaseAgent
@@ -19,7 +22,9 @@ class QuantumAgent(BaseAgent):
         self.memory = defaultdict(tuple)
 
     def get_action(self, state, env):
-        circuit = QuantumCircuit(2, 2)
+        qr = QuantumRegister(2)
+        cr = ClassicalRegister(2)
+        circuit = QuantumCircuit(qr, cr)
         circuit.h(0)
         circuit.h(1)
 
@@ -34,6 +39,7 @@ class QuantumAgent(BaseAgent):
             circuit = groverIteration(circuit, action, reward, next_state_value)
 
         action = collapse_action_select_method(circuit)
+
         if action not in self.action_space:
             action = self.get_action(state, env)
         return action
@@ -74,7 +80,6 @@ def groverIteration(eigen_action, action, reward, next_state_value):
     L = int(0.2 * (reward + next_state_value))
     if L > 1:
         L = 1
-
     qr = eigen_action.qubits
     if action == 0:
         for x in range(L):

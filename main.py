@@ -24,7 +24,8 @@ if __name__ == '__main__':
         episode_rewards=np.zeros(args.num_episodes),
     )
 
-    for i_episode in tqdm(range(args.num_episodes)):
+    p_bar = tqdm(range(args.num_episodes))
+    for i_episode in p_bar:
         state = env.reset()
         done = False
         t = 0
@@ -42,4 +43,5 @@ if __name__ == '__main__':
             stats.episode_lengths[i_episode] = t + 1
             t += 1
 
+        p_bar.set_description(f'episode_reward: {stats.episode_rewards[i_episode]:.3f}')
     plotting.plot_episode_stats(stats)

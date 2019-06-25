@@ -10,6 +10,7 @@ pandas = "*"
 tqdm = "*"
 qiskit = "*"
 "flake8" = "*"
+bistiming = "*"
 
 [dev-packages]
 
